@@ -1,30 +1,30 @@
 const { Router } = require('express')
-const {toJWT} = require('./jwt')
-const User = require('../user/model')
 const bcrypt = require('bcrypt')
+const {toJWT} = require('./jwt')
 const auth = require('./middleware')
+const User = require('../user/model')
 
 const router = new Router()
 
 router.post('/login', function (req, res) {
-    const userName = req.body.userName
+    const username = req.body.username
     const password = req.body.password
 
-    if(!userName && !password){
+    if(!username && !password){
         res.status(400).send({
-            message: 'Please enter a valid userName and/or password'
+            message: 'Please enter a valid username and/or password'
         })
     } else {
         User
             .findOne({
                 where: {
-                    userName: userName
+                    username: username
                 }
             })
             .then(user => {
                 if (!user) {
                     res.status(400).send({
-                        message: `User with this userName does not exist`
+                        message: `User with this username does not exist`
                     })
                 }
                 if(bcrypt.compareSync(password, user.password)) {
@@ -48,7 +48,7 @@ router.post('/login', function (req, res) {
 
 router.get('/authentication', auth, (req, res) => {
     res.send({
-        message: `The user ${req.user.userName} is authenticated`,
+        message: `The user ${req.user.username} is authenticated`,
     })
 })
 
