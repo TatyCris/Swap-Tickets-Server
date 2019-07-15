@@ -11,7 +11,7 @@ router.get('/events', function (req, res, next) {
         Event.findAll({ limit, offset })
     ])
         .then(([total, events]) => {
-            res.send({ events, total })
+            res.status(200).send({ events, total })
         })
         .catch(error => next(error))
 })
@@ -19,14 +19,16 @@ router.get('/events', function (req, res, next) {
 router.post('/events', function (req, res, next) {
     Event
         .create(req.body)
-        .then(events => res.json(events))
+        .then(events => res.status(201).json(events))
         .catch(err => next(err))
 })
 
 router.get('/events/:id', function (req, res, next) {
     const id = req.params.id
-    Event.findByPk(id)
-        .then(events => res.json(events))
+
+    Event
+        .findByPk(id)
+        .then(events => res.status(200).json(events))
         .catch(err => next(err))
 })
 
@@ -38,11 +40,20 @@ router.put('/events/:id', function (req, res, next) {
     const { start } = new Date(req.body)
     const { end } = new Date(req.body)
 
-    Event.findByPk(id)
-        .then(event => {
-            return event.update({ name, description, pictureUrl, start, end })
-        })
-        .then(event => res.json(event))
+    Event
+        .findByPk(id)
+        .then(event => event.update({ name, description, pictureUrl, start, end }))
+        .then(event => res.status(200).json(event))
+        .catch(err => next(err))
+})
+
+router.delete('/events/:id', function (req, res, next) {
+    const { id } = req.params
+
+    Event
+        .findByPk(id)
+        .then(event => event.destroy())
+        .then(event => res.status(200).send('Deleted successfully'))
         .catch(err => next(err))
 })
 
