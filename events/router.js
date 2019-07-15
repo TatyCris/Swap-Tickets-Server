@@ -1,6 +1,7 @@
 const express = require('express')
-const router = express.Router()
 const Event = require('./model')
+
+const router = express.Router()
 
 router.get('/events', function (req, res, next) {
     const limit = req.query.limit || 9

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 const Event = require('../events/model')
 
-const Ticket = db.define('tiket',
+const Ticket = db.define('ticket',
     {
         pictureUrl: {
             type: Sequelize.STRING,
@@ -18,7 +18,7 @@ const Ticket = db.define('tiket',
             field: 'description'
         }
     },
-    { tableName: 'tikets' }
+    { tableName: 'tickets' }
 )
 
 Event.hasMany(Ticket)

@@ -1,7 +1,8 @@
-const Event = require('../events/model')
 const express = require('express')
-const router = express.Router()
 const Ticket = require('./model')
+const Event = require('../events/model')
+
+const router = express.Router()
 
 router.get('/events/:id/tickets', function (req, res, next) {
     Event
@@ -26,7 +27,7 @@ router.post('/events/:id/tickets', function (req, res, next) {
                 res.status(404).send('Event not found')
             }
 
-            req.body.eventId = event.id
+            req.body.eventId = req.params.id
 
             Ticket
                 .create(req.body)
