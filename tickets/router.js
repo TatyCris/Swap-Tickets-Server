@@ -1,6 +1,7 @@
 const express = require('express')
 const Ticket = require('./model')
 const Event = require('../events/model')
+const auth = require('../auth/middleware')
 
 const router = express.Router()
 
@@ -19,15 +20,16 @@ router.get('/events/:id/tickets', function (req, res, next) {
         })
 })
 
-router.post('/events/:id/tickets', function (req, res, next) {
+router.post('/events/:id/tickets', auth, function (req, res, next) {
     Event
         .findOne({ where: { id: req.params.id } })
         .then(event => {
             if (!event) {
                 res.status(404).send('Event not found')
             }
-
+            
             req.body.eventId = req.params.id
+            req.body.userId = req.user.dataValues.id
 
             Ticket
                 .create(req.body)

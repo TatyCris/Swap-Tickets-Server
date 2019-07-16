@@ -1,5 +1,6 @@
 const express = require('express')
 const Event = require('./model')
+const auth = require('../auth/middleware')
 
 const router = express.Router()
 
@@ -17,7 +18,7 @@ router.get('/events', function (req, res, next) {
         .catch(error => next(error))
 })
 
-router.post('/events', function (req, res, next) {
+router.post('/events', auth, function (req, res, next) {
     Event
         .create(req.body)
         .then(events => res.status(201).json(events))

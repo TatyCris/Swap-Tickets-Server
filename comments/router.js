@@ -2,6 +2,7 @@ const express = require('express')
 const Comment = require('./model')
 const Ticket = require('../tickets/model')
 const Event = require('../events/model')
+const auth = require('../auth/middleware')
 
 const router = express.Router()
 
@@ -32,7 +33,7 @@ router.get('/events/:id/tickets/:ticketId/comments', function (req, res, next) {
         .catch(err => next(err))
 })
 
-router.post('/events/:id/tickets/:ticketId/comments', function (req, res, next) {
+router.post('/events/:id/tickets/:ticketId/comments', auth, function (req, res, next) {
     const { ticketId } = req.params
 
     Event
