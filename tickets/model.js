@@ -3,7 +3,7 @@ const db = require('../db')
 const Event = require('../events/model')
 const User = require('../user/model')
 
-const Ticket = db.define('tiket',
+const Ticket = db.define('ticket',
     {
         pictureUrl: {
             type: Sequelize.STRING,
@@ -17,9 +17,13 @@ const Ticket = db.define('tiket',
         description: {
             type: Sequelize.STRING,
             field: 'description'
+        },
+        created_at: {
+            type: 'TIMESTAMP',
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         }
     },
-    { tableName: 'tikets' }
+    { tableName: 'tickets' }
 )
 
 Event.hasMany(Ticket)
