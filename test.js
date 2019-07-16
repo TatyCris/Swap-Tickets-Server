@@ -70,6 +70,20 @@ let risk = 0
 // console.log('risk', risk);
 
 // -----4
+//get all comments with ticketId = x
+// const ticketComments = [{}, {}, {}, {}]
+// if (ticketComments.length > 3) {
+//     risk += 5
+// }
+
+// console.log('risk', risk);
+
+// -----5
+// risk = Math.min(risk, 95) || Math.max(risk, 5)
+// console.log('risk', risk);
+
+
+
 
 
 
