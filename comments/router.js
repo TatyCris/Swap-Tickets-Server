@@ -43,6 +43,8 @@ router.post('/events/:id/tickets/:ticketId/comments', auth, function (req, res, 
                 res.status(404).send('Event not found')
             }
 
+            req.body.author = req.user.dataValues.username
+
             Ticket
                 .findOne({ where: { id: req.params.ticketId } })
                 .then(ticket => {
