@@ -30,6 +30,7 @@ router.post('/events/:id/tickets', auth, function (req, res, next) {
             
             req.body.eventId = req.params.id
             req.body.userId = req.user.dataValues.id
+            req.body.author = req.user.dataValues.username
 
             Ticket
                 .create(req.body)

@@ -18,6 +18,10 @@ const Ticket = db.define('ticket',
             type: Sequelize.STRING,
             field: 'description'
         },
+        author: {
+            type: Sequelize.STRING,
+            field: 'author'
+        },
         created_at: {
             type: 'TIMESTAMP',
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
