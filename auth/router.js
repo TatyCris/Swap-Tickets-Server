@@ -48,7 +48,8 @@ router.post('/login', function (req, res) {
 
 router.get('/authentication', auth, (req, res) => {
     res.send({
-        message: `The user ${req.user.username} is authenticated`,
+        userId: req.user.id,
+        username: req.user.username
     })
 })
 
