@@ -1,6 +1,8 @@
 const express = require('express')
 const Event = require('./model')
 const auth = require('../auth/middleware')
+var Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 const router = express.Router()
 
@@ -9,8 +11,12 @@ router.get('/events', function (req, res, next) {
     const offset = req.query.offset || 0
 
     Promise.all([
-        Event.count(),
-        Event.findAll({ limit, offset })
+        Event.count({ where: {
+            end: { [Op.gte]: new Date() }}
+        }),
+        Event.findAll({ where: {
+            end: { [Op.gte]: new Date() }
+        }, limit, offset })
     ])
         .then(([total, events]) => {
             res.status(200).send({ events, total })
