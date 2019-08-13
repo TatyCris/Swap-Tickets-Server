@@ -13,7 +13,7 @@ This is a node.js server for the Swap Tickets real world project - which was cre
 The Front-end for the following repo may be found [here](https://github.com/TatyCris/Swap-Tickets-Client)
 
 The Backend is deployed to heroku [here](
-https://swap-tickets-server.herokuapp.com)
+https://tikets-now-server.herokuapp.com)
 
 ## Technologies used
 - PostgreSQL
@@ -58,7 +58,7 @@ MODELS:
 
 ENDPOINTS:
 
-\<base url\> is either http://localhost:4000 for local development or https://swap-tickets-server.herokuapp.com for the deployed backend.
+\<base url\> is either http://localhost:4000 for local development or https://tikets-now-server.herokuapp.com for the deployed backend.
 </br>
 
 Create an user:
