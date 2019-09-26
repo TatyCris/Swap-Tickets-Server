@@ -1,4 +1,4 @@
-# Swap-Tickets-Server
+# Tickets Now
 This project is the server side of a full stack web-application where users can buy and sell tickets for all kinds of events.
 
 ## Table of contents
