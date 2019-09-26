@@ -1,4 +1,4 @@
-# Tickets Now
+# TicketsNow
 This project is the server side of a full stack web-application where users can buy and sell tickets for all kinds of events.
 
 ## Table of contents
@@ -8,9 +8,9 @@ This project is the server side of a full stack web-application where users can 
 - [API](#API)
 
 ## Intro
-This is a node.js server for the Swap Tickets real world project - which was created for the final assignment during week 8 of the Codaisseur Academy.
+This is a node.js server for the TicketsNow real world project - which was created for the final assignment during week 8 of the Codaisseur Academy.
 
-The Front-end for the following repo may be found [here](https://github.com/TatyCris/Swap-Tickets-Client)
+The Front-end for the following repo may be found [here](https://github.com/TatyCris/TicketsNow-Client)
 
 The Backend is deployed to heroku [here](
 https://tikets-now-server.herokuapp.com)
@@ -34,7 +34,7 @@ $ docker run \
   
 - git clone
 ```bash
-$ git clone https://github.com/TatyCris/Swap-Tickets-Server.git
+$ git clone https://github.com/TatyCris/TicketsNow-Server.git
 ```
 
 - npm install
